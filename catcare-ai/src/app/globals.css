@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  CatCare AI dizaino žetonai (design tokens)
+  Paletė sukurta pagal katės sveikatos temą: gili aguonos-teal spalva
+  (ramybė, pasitikėjimas, klinika) + šilta gintaro spalva (katės akys, šiluma).
+  Sąmoningai vengiama standartinės kreminės+terakotos ("AI dizaino") schemos.
+*/
+
+@layer base {
+  :root {
+    --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    --background: 42 28% 96%;        /* šiltai balta linų spalva */
+    --foreground: 200 22% 12%;       /* tamsi teal-charcoal */
+    --card: 42 32% 99%;
+    --card-foreground: 200 22% 12%;
+    --muted: 40 18% 90%;
+    --muted-foreground: 200 10% 40%;
+    --primary: 174 46% 24%;          /* gili veterinarinė teal */
+    --primary-foreground: 42 32% 98%;
+    --accent: 32 62% 58%;            /* katės akies gintaras */
+    --accent-foreground: 200 22% 12%;
+    --destructive: 4 62% 46%;        /* raudona - skubu */
+    --destructive-foreground: 42 32% 98%;
+    --warning: 28 78% 52%;           /* oranžinė - vidutinis skubumas */
+    --warning-foreground: 200 22% 12%;
+    --success: 142 30% 36%;          /* žalia - galima stebėti namuose */
+    --success-foreground: 42 32% 98%;
+    --border: 40 18% 85%;
+    --ring: 174 46% 24%;
+    --radius: 0.85rem;
+  }
+
+  .dark {
+    --background: 200 24% 8%;
+    --foreground: 42 24% 92%;
+    --card: 200 22% 11%;
+    --card-foreground: 42 24% 92%;
+    --muted: 200 16% 16%;
+    --muted-foreground: 42 10% 65%;
+    --primary: 174 40% 52%;
+    --primary-foreground: 200 24% 8%;
+    --accent: 32 68% 62%;
+    --accent-foreground: 200 24% 8%;
+    --destructive: 4 68% 58%;
+    --destructive-foreground: 200 24% 8%;
+    --warning: 28 78% 60%;
+    --warning-foreground: 200 24% 8%;
+    --success: 142 30% 52%;
+    --success-foreground: 200 24% 8%;
+    --border: 200 16% 20%;
+    --ring: 174 40% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Ūsų linijos motyvas - naudojamas kaip skyrių žymeklis (signature element) */
+.whisker-divider {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    hsl(var(--border)) 15%,
+    hsl(var(--border)) 85%,
+    transparent
+  );
+}
+
+.whisker-divider::before,
+.whisker-divider::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  width: 24px;
+  height: 7px;
+  border-top: 1px solid hsl(var(--border));
+  border-radius: 50%;
+}
+
+.whisker-divider::before { left: 8%; transform: rotate(-4deg); }
+.whisker-divider::after { right: 8%; transform: rotate(4deg); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-in {
+    animation: fadeSlideIn 0.35s ease-out both;
+  }
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
