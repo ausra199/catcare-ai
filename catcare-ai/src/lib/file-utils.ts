@@ -1,4 +1,5 @@
- apdorojimo pagalbinės funkcijos.
+/**
+* Failų apdorojimo pagalbinės funkcijos.
 *
 * MVP versijoje failai (nuotraukos, tyrimų dokumentai) saugomi kaip base64
 * duomenų URL tiesiai naršyklės localStorage. localStorage turi ribotą talpą
